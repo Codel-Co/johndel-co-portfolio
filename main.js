@@ -8,6 +8,43 @@
 
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* ---------------------------------------------- startup preloader */
+
+  var preloader = document.getElementById('preloader');
+
+  if (preloader) {
+    if (reduceMotion) {
+      preloader.remove();
+    } else {
+      document.body.classList.add('is-locked');
+
+      var MIN_SHOW = 900;   // ms — floor so it never just flashes
+      var MAX_SHOW = 3200;  // ms — ceiling in case a resource stalls
+      var started = Date.now();
+      var dismissed = false;
+
+      var dismiss = function () {
+        if (dismissed) { return; }
+        dismissed = true;
+
+        var wait = Math.max(0, MIN_SHOW - (Date.now() - started));
+        window.setTimeout(function () {
+          preloader.classList.add('is-hidden');
+          document.body.classList.remove('is-locked');
+          window.setTimeout(function () { preloader.remove(); }, 750);
+        }, wait);
+      };
+
+      window.setTimeout(dismiss, MAX_SHOW);
+
+      if (document.readyState === 'complete') {
+        dismiss();
+      } else {
+        window.addEventListener('load', dismiss);
+      }
+    }
+  }
+
   /* ---------------------------------------------- mobile menu */
 
   var toggle = document.getElementById('menuToggle');
@@ -124,6 +161,36 @@
     });
   }
 
+  /* ---------------------------------------------- resume link check
+     The button points at assets/johndel-co-resume.pdf. If that file has not
+     been added to the repo yet, say so in place instead of opening a 404. */
+
+  var resumeLink = document.querySelector('a[download]');
+
+  if (resumeLink) {
+    resumeLink.addEventListener('click', function (e) {
+      if (resumeLink.dataset.verified === 'true') { return; }
+      e.preventDefault();
+
+      fetch(resumeLink.getAttribute('href'), { method: 'HEAD' })
+        .then(function (res) {
+          if (!res.ok) { throw new Error(res.status); }
+          resumeLink.dataset.verified = 'true';
+          resumeLink.click();
+        })
+        .catch(function () {
+          var note = document.getElementById('resumeNote');
+          if (!note) {
+            note = document.createElement('p');
+            note.id = 'resumeNote';
+            note.className = 'actions__note';
+            note.setAttribute('role', 'status');
+            resumeLink.closest('.actions').after(note);
+          }
+          note.textContent = 'Resume file not found. Add assets/johndel-co-resume.pdf to the site folder.';
+        });
+    });
+  }
 
   /* ---------------------------------------------- header state */
 
