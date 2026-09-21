@@ -29,7 +29,7 @@
     <nav class="nav-desktop" aria-label="Primary">
       <ul>
         <li><a href="#profile">Profile</a></li>
-        <li><a href="#expertise">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -46,7 +46,7 @@
   <nav aria-label="Mobile">
     <ul>
       <li><a href="#profile"><em>01</em>Profile</a></li>
-      <li><a href="#expertise"><em>02</em>Experience</a></li>
+      <li><a href="#skills"><em>02</em>Skills</a></li>
       <li><a href="#projects"><em>03</em>Projects</a></li>
       <li><a href="#contact"><em>04</em>Contact</a></li>
     </ul>
@@ -69,9 +69,8 @@
         </h1>
 
         <p class="lede reveal" data-delay="2">
-          I’m an IT professional focused on networking and IT operations, combining technical
-          troubleshooting, network configuration, documentation, and project planning to develop
-          practical and reliable technology solutions.
+          I’m an IT professional focused on networking and IT support, with a strong interest in
+          network configuration, troubleshooting, and IT operations.
         </p>
 
         <div class="actions reveal" data-delay="3">
@@ -90,52 +89,239 @@
 
     </div>
 
+    <div class="shell about">
+      <div class="about__grid">
+
+        <div class="about__text reveal">
+          <p class="about__eyebrow">About me</p>
+          <p>
+            I enjoy working with computers and hardware, and I particularly like understanding how
+            systems and devices connect, communicate, and work together.
+          </p>
+          <p>
+            My goal is to build a career in network engineering and IT support, where I can continue
+            developing my skills in network configuration, troubleshooting, and IT operations while
+            gaining practical experience in real-world environments.
+          </p>
+        </div>
+
+        <div class="about__cards reveal" data-delay="1">
+          <div class="stat-card">
+            <p class="stat-card__top">2023–2027</p>
+            <p class="stat-card__main">Bachelor of Science in Information Technology</p>
+            <p class="stat-card__sub">Dr. Yanga’s Colleges, Inc. — Bocaue, Bulacan</p>
+          </div>
+          <div class="stat-card">
+            <p class="stat-card__top">Network Engineering</p>
+            <p class="stat-card__sub">Career focus</p>
+          </div>
+          <div class="stat-card">
+            <p class="stat-card__top">IT Support</p>
+            <p class="stat-card__sub">Technical focus</p>
+          </div>
+          <div class="stat-card">
+            <p class="stat-card__top">Networking</p>
+            <p class="stat-card__sub">Technical focus</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
     <div class="shell">
-      <a class="scroll-cue" href="#expertise">
+      <a class="scroll-cue" href="#skills">
         <span>Scroll to explore</span>
         <span class="scroll-cue__rail" aria-hidden="true"><i></i></span>
       </a>
     </div>
   </section>
 
-  <!-- ==================== EXPERTISE ==================== -->
-  <section class="section expertise" id="expertise">
+  <!-- ==================== SKILLS ==================== -->
+  <section class="section skills" id="skills">
     <div class="shell">
+      <p class="eyebrow reveal">Skills</p>
       <h2 class="section-title reveal">
-        <span class="section-title__bold">Areas of</span>
-        <span class="section-title__soft">expertise.</span>
+        <span class="section-title__bold">What I</span>
+        <span class="section-title__soft">know.</span>
       </h2>
 
-      <div class="rows">
+      <!-- toggle -->
+      <div class="skills-toggle reveal" role="tablist" aria-label="Skill category">
+        <button type="button" class="skills-toggle__btn is-active" role="tab" id="tabTechnical"
+                aria-selected="true" aria-controls="panelTechnical">Technical Skills</button>
+        <button type="button" class="skills-toggle__btn" role="tab" id="tabProfessional"
+                aria-selected="false" aria-controls="panelProfessional" tabindex="-1">Professional / Soft Skills</button>
+        <span class="skills-toggle__thumb" aria-hidden="true"></span>
+      </div>
 
-        <article class="row reveal">
-          <p class="row__no">01</p>
-          <h3 class="row__title">Networking</h3>
-          <p class="row__body">
-            Designing and configuring network topologies using Cisco Packet Tracer, with experience in
-            IPv4 addressing, subnetting, router configuration, and basic network troubleshooting.
-          </p>
-        </article>
+      <!-- panels -->
+      <div class="skills-panels reveal" data-delay="1">
 
-        <article class="row reveal">
-          <p class="row__no">02</p>
-          <h3 class="row__title">IT Support &amp; Troubleshooting</h3>
-          <p class="row__body">
-            Applying systematic troubleshooting to identify and resolve basic hardware, software,
-            operating system, and network connectivity issues.
-          </p>
-        </article>
+        <div class="skills-panel is-active" id="panelTechnical" role="tabpanel" aria-labelledby="tabTechnical" tabindex="0">
+          <div class="skill-group">
+            <div class="skill-group__head">
+              <span class="skill-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13a9 9 0 0 1 18 0"/><path d="M21 13v5a2 2 0 0 1-2 2h-1v-7h3Z"/><path d="M3 13v5a2 2 0 0 0 2 2h1v-7H3Z"/></svg>
+              </span>
+              <h3>IT Support</h3>
+            </div>
+            <ul class="skill-chips">
+              <li>Technical Support</li>
+              <li>Computer Hardware Troubleshooting</li>
+              <li>Software Installation &amp; Configuration</li>
+              <li>System Administration</li>
+            </ul>
+          </div>
 
-        <article class="row reveal">
-          <p class="row__no">03</p>
-          <h3 class="row__title">IT Operations &amp; Documentation</h3>
-          <p class="row__body">
-            Organizing technical documentation, project requirements, workflows, and configurations
-            while supporting the planning and implementation of IT projects.
-          </p>
-        </article>
+          <div class="skill-group">
+            <div class="skill-group__head">
+              <span class="skill-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2Z"/><path d="M9 13h6M9 17h6"/></svg>
+              </span>
+              <h3>Productivity</h3>
+            </div>
+            <ul class="skill-chips">
+              <li>Microsoft Excel</li>
+              <li>Microsoft Word</li>
+              <li>Microsoft PowerPoint</li>
+            </ul>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-group__head">
+              <span class="skill-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6l1 3H8l1-3Z"/><rect x="5" y="6" width="14" height="15" rx="2"/><path d="M9 12h6M9 16h6"/></svg>
+              </span>
+              <h3>Project &amp; Documentation</h3>
+            </div>
+            <ul class="skill-chips">
+              <li>Project Planning &amp; Documentation</li>
+              <li>Technical Documentation</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="skills-panel" id="panelProfessional" role="tabpanel" aria-labelledby="tabProfessional" tabindex="0" hidden>
+          <div class="skill-group">
+            <div class="skill-group__head">
+              <span class="skill-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M2 20c0-3.3 3-6 7-6s7 2.7 7 6"/><circle cx="17" cy="8" r="2.6"/><path d="M16.5 14.2c2.9.4 5.5 2.6 5.5 5.8"/></svg>
+              </span>
+              <h3>Professional / Soft Skills</h3>
+            </div>
+            <ul class="skill-chips">
+              <li>Teamwork</li>
+              <li>Communication</li>
+              <li>Problem-Solving</li>
+              <li>Organization</li>
+              <li>Project Coordination</li>
+              <li>Technical Documentation</li>
+              <li>Willingness to Learn</li>
+              <li>Attention to Detail</li>
+              <li>Time Management</li>
+            </ul>
+          </div>
+        </div>
 
       </div>
+    </div>
+
+    <!-- certifications -->
+    <div class="shell certs">
+      <h3 class="subhead reveal">Certifications &amp; Licenses</h3>
+
+      <div class="cert-grid">
+
+        <button type="button" class="cert-card reveal"
+                data-cert-src="assets/cert-hardware-basics.jpg"
+                data-cert-title="Computer Hardware Basics"
+                data-cert-issuer="Cisco Networking Academy">
+          <span class="cert-card__thumb">
+            <img src="assets/cert-hardware-basics.jpg" alt="Computer Hardware Basics certificate from Cisco Networking Academy" loading="lazy">
+          </span>
+          <span class="cert-card__meta">
+            <span class="cert-card__no">01</span>
+            <span class="cert-card__title">Computer Hardware Basics</span>
+            <span class="cert-card__issuer">Cisco Networking Academy</span>
+          </span>
+        </button>
+
+        <button type="button" class="cert-card reveal"
+                data-cert-src="assets/cert-cybersecurity.jpg"
+                data-cert-title="Cybersecurity"
+                data-cert-issuer="Information Technology Specialist">
+          <span class="cert-card__thumb">
+            <img src="assets/cert-cybersecurity.jpg" alt="Cybersecurity certificate, Information Technology Specialist" loading="lazy">
+          </span>
+          <span class="cert-card__meta">
+            <span class="cert-card__no">02</span>
+            <span class="cert-card__title">Cybersecurity</span>
+            <span class="cert-card__issuer">Information Technology Specialist</span>
+          </span>
+        </button>
+
+        <button type="button" class="cert-card reveal"
+                data-cert-src="assets/cert-database-foundations.jpg"
+                data-cert-title="Database Foundations"
+                data-cert-issuer="Oracle Academy">
+          <span class="cert-card__thumb">
+            <img src="assets/cert-database-foundations.jpg" alt="Database Foundations certificate from Oracle Academy" loading="lazy">
+          </span>
+          <span class="cert-card__meta">
+            <span class="cert-card__no">03</span>
+            <span class="cert-card__title">Database Foundations</span>
+            <span class="cert-card__issuer">Oracle Academy</span>
+          </span>
+        </button>
+
+        <button type="button" class="cert-card reveal"
+                data-cert-src="assets/cert-excel-associate.jpg"
+                data-cert-title="Excel 2019 Associate"
+                data-cert-issuer="Microsoft Office Specialist">
+          <span class="cert-card__thumb">
+            <img src="assets/cert-excel-associate.jpg" alt="Excel 2019 Associate certificate, Microsoft Office Specialist" loading="lazy">
+          </span>
+          <span class="cert-card__meta">
+            <span class="cert-card__no">04</span>
+            <span class="cert-card__title">Excel 2019 Associate</span>
+            <span class="cert-card__issuer">Microsoft Office Specialist</span>
+          </span>
+        </button>
+
+        <button type="button" class="cert-card reveal"
+                data-cert-src="assets/cert-java-fundamentals.jpg"
+                data-cert-title="Java Fundamentals"
+                data-cert-issuer="Oracle Academy">
+          <span class="cert-card__thumb">
+            <img src="assets/cert-java-fundamentals.jpg" alt="Java Fundamentals certificate from Oracle Academy" loading="lazy">
+          </span>
+          <span class="cert-card__meta">
+            <span class="cert-card__no">05</span>
+            <span class="cert-card__title">Java Fundamentals</span>
+            <span class="cert-card__issuer">Oracle Academy</span>
+          </span>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- seminars -->
+    <div class="shell seminars">
+      <h3 class="subhead reveal">Seminars &amp; Training</h3>
+      <ul class="seminar-list">
+        <li class="reveal">
+          <span class="seminar-list__name">4th Regional Cybersecurity Conference</span>
+          <span class="seminar-list__year">2025</span>
+        </li>
+        <li class="reveal">
+          <span class="seminar-list__name">Philippine Society of Information Technology Educators — Central Luzon</span>
+          <span class="seminar-list__year">2026</span>
+        </li>
+        <li class="reveal">
+          <span class="seminar-list__name">FlutterFlow Workshop</span>
+          <span class="seminar-list__year">2025</span>
+        </li>
+      </ul>
     </div>
   </section>
 
@@ -160,12 +346,25 @@
         <div class="project__meta">
           <p class="project__index">Project 01</p>
           <h3 class="project__name">SafeComm</h3>
-          <p class="project__year">2026</p>
+          <p class="project__role">Documentation &amp; Coordination Lead <span>· 2026</span></p>
           <p class="project__body">
-            Contributed to the planning and documentation of an AI-enhanced community platform that
-            streamlines gender-based violence reporting, case tracking, evidence management, and risk
-            prediction through structured workflows and organized project requirements.
+            Contributed as the Documentation &amp; Coordination Lead for an AI-enhanced community
+            platform designed for gender-based violence reporting, case tracking, evidence management,
+            and risk prediction. Planned and organized system requirements, workflows, features, and
+            project deliverables, while also designing the system’s Data Flow Diagram (DFD).
           </p>
+          <ul class="project__points">
+            <li>Documentation &amp; project planning</li>
+            <li>System requirements &amp; feature planning</li>
+            <li>Workflow organization</li>
+            <li>DFD design</li>
+          </ul>
+          <ul class="project__tags">
+            <li>Next.js</li>
+            <li>TypeScript</li>
+            <li>Material UI</li>
+            <li>Gemini API</li>
+          </ul>
         </div>
       </article>
 
@@ -179,12 +378,29 @@
         <div class="project__meta">
           <p class="project__index">Project 02</p>
           <h3 class="project__name">Subnetted Network Design and OSPF Routing</h3>
-          <p class="project__year">2025</p>
+          <p class="project__role">Network Configuration &amp; Documentation <span>· 2025</span></p>
           <p class="project__body">
-            Designed and configured a multi-router network using Cisco Packet Tracer that applies IPv4
-            subnetting, IP addressing, and OSPF Area 0 to establish dynamic communication between
-            multiple network segments.
+            Designed and configured a multi-router network in Cisco Packet Tracer, applying IPv4
+            subnetting and addressing based on different host requirements. Configured OSPF Area 0 to
+            establish dynamic routing between three routers and verified connectivity across multiple
+            network segments.
           </p>
+          <ul class="project__points">
+            <li>Multi-router topology</li>
+            <li>IPv4 addressing</li>
+            <li>Network subnetting</li>
+            <li>Host-based subnet calculation</li>
+            <li>Three-router configuration</li>
+            <li>OSPF Area 0</li>
+            <li>Dynamic routing</li>
+            <li>Connectivity testing</li>
+          </ul>
+          <ul class="project__tags">
+            <li>Cisco Packet Tracer</li>
+            <li>IPv4</li>
+            <li>Subnetting</li>
+            <li>OSPF</li>
+          </ul>
         </div>
       </article>
 
@@ -197,13 +413,30 @@
         </a>
         <div class="project__meta">
           <p class="project__index">Project 03</p>
-          <h3 class="project__name">VLAN Segmentation and Inter-VLAN Communication</h3>
-          <p class="project__year">2025</p>
+          <h3 class="project__name">Student Meets Faculty</h3>
+          <p class="project__role">VLAN Segmentation and Inter-VLAN Communication <span>· 2025</span></p>
           <p class="project__body">
-            Designed and configured a segmented network using VLANs and inter-VLAN routing to organize
-            student and faculty devices into separate network segments while enabling controlled
-            communication between VLANs.
+            Designed and configured a segmented LAN in Cisco Packet Tracer to separate student and
+            faculty devices into dedicated VLANs. Configured VLAN assignments and inter-VLAN routing to
+            enable communication between the network segments while maintaining logical separation of
+            devices.
           </p>
+          <ul class="project__points">
+            <li>VLAN configuration</li>
+            <li>VLAN segmentation</li>
+            <li>Inter-VLAN routing</li>
+            <li>Switch configuration</li>
+            <li>Router configuration</li>
+            <li>IPv4 addressing</li>
+            <li>Connectivity testing</li>
+            <li>Network verification</li>
+          </ul>
+          <ul class="project__tags">
+            <li>Cisco Packet Tracer</li>
+            <li>VLAN</li>
+            <li>Inter-VLAN Routing</li>
+            <li>IPv4</li>
+          </ul>
         </div>
       </article>
 
@@ -242,6 +475,20 @@
     <p>Copyright &copy; 2026 Johndel M. Co. All Rights Reserved.</p>
   </div>
 </footer>
+
+<div class="cert-modal" id="certModal" hidden>
+  <div class="cert-modal__backdrop" data-cert-close></div>
+  <div class="cert-modal__panel" role="dialog" aria-modal="true" aria-labelledby="certModalTitle">
+    <button type="button" class="cert-modal__close" data-cert-close aria-label="Close certificate preview">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <img class="cert-modal__img" id="certModalImg" src="" alt="">
+    <div class="cert-modal__caption">
+      <p class="cert-modal__title" id="certModalTitle"></p>
+      <p class="cert-modal__issuer" id="certModalIssuer"></p>
+    </div>
+  </div>
+</div>
 
 <script src="main.js"></script>
 </body>

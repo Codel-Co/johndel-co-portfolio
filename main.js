@@ -161,36 +161,6 @@
     });
   }
 
-  /* ---------------------------------------------- resume link check
-     The button points at assets/johndel-co-resume.pdf. If that file has not
-     been added to the repo yet, say so in place instead of opening a 404. */
-
-  var resumeLink = document.querySelector('a[download]');
-
-  if (resumeLink) {
-    resumeLink.addEventListener('click', function (e) {
-      if (resumeLink.dataset.verified === 'true') { return; }
-      e.preventDefault();
-
-      fetch(resumeLink.getAttribute('href'), { method: 'HEAD' })
-        .then(function (res) {
-          if (!res.ok) { throw new Error(res.status); }
-          resumeLink.dataset.verified = 'true';
-          resumeLink.click();
-        })
-        .catch(function () {
-          var note = document.getElementById('resumeNote');
-          if (!note) {
-            note = document.createElement('p');
-            note.id = 'resumeNote';
-            note.className = 'actions__note';
-            note.setAttribute('role', 'status');
-            resumeLink.closest('.actions').after(note);
-          }
-          note.textContent = 'Resume file not found. Add assets/johndel-co-resume.pdf to the site folder.';
-        });
-    });
-  }
 
   /* ---------------------------------------------- header state */
 
@@ -221,6 +191,125 @@
     }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
 
     Array.prototype.forEach.call(sections, function (s) { spy.observe(s); });
+  }
+
+  /* ---------------------------------------------- skills toggle */
+
+  var toggleWrap = document.querySelector('.skills-toggle');
+  var tabTechnical = document.getElementById('tabTechnical');
+  var tabProfessional = document.getElementById('tabProfessional');
+  var panelTechnical = document.getElementById('panelTechnical');
+  var panelProfessional = document.getElementById('panelProfessional');
+  var thumb = toggleWrap ? toggleWrap.querySelector('.skills-toggle__thumb') : null;
+
+  function positionThumb(activeBtn) {
+    if (!thumb || !activeBtn) { return; }
+    var wrapRect = toggleWrap.getBoundingClientRect();
+    var btnRect = activeBtn.getBoundingClientRect();
+    toggleWrap.style.setProperty('--thumb-w', btnRect.width + 'px');
+    toggleWrap.style.setProperty('--thumb-x', (btnRect.left - wrapRect.left - 4) + 'px');
+  }
+
+  function activateTab(which) {
+    var showTechnical = which === 'technical';
+    var activeBtn = showTechnical ? tabTechnical : tabProfessional;
+    var inactiveBtn = showTechnical ? tabProfessional : tabTechnical;
+    var showPanel = showTechnical ? panelTechnical : panelProfessional;
+    var hidePanel = showTechnical ? panelProfessional : panelTechnical;
+
+    if (!activeBtn || !showPanel || activeBtn.classList.contains('is-active')) { return; }
+
+    activeBtn.classList.add('is-active');
+    activeBtn.setAttribute('aria-selected', 'true');
+    activeBtn.removeAttribute('tabindex');
+    inactiveBtn.classList.remove('is-active');
+    inactiveBtn.setAttribute('aria-selected', 'false');
+    inactiveBtn.setAttribute('tabindex', '-1');
+
+    positionThumb(activeBtn);
+
+    var swap = function () {
+      hidePanel.hidden = true;
+      hidePanel.classList.remove('is-leaving');
+      showPanel.hidden = false;
+      requestAnimationFrame(function () { showPanel.classList.remove('is-leaving'); });
+    };
+
+    if (reduceMotion) {
+      swap();
+    } else {
+      hidePanel.classList.add('is-leaving');
+      window.setTimeout(swap, 260);
+    }
+  }
+
+  if (tabTechnical && tabProfessional) {
+    tabTechnical.addEventListener('click', function () { activateTab('technical'); });
+    tabProfessional.addEventListener('click', function () { activateTab('professional'); });
+
+    [tabTechnical, tabProfessional].forEach(function (btn, i, arr) {
+      btn.addEventListener('keydown', function (e) {
+        if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') { return; }
+        e.preventDefault();
+        var next = arr[i === 0 ? 1 : 0];
+        next.focus();
+        activateTab(next === tabTechnical ? 'technical' : 'professional');
+      });
+    });
+
+    window.setTimeout(function () { positionThumb(tabTechnical); }, 50);
+    window.addEventListener('resize', function () {
+      var active = toggleWrap.querySelector('.skills-toggle__btn.is-active');
+      positionThumb(active);
+    });
+  }
+
+  /* ---------------------------------------------- certificate lightbox */
+
+  var certModal = document.getElementById('certModal');
+  var certModalImg = document.getElementById('certModalImg');
+  var certModalTitle = document.getElementById('certModalTitle');
+  var certModalIssuer = document.getElementById('certModalIssuer');
+  var certCards = document.querySelectorAll('.cert-card');
+  var lastCertTrigger = null;
+
+  function openCert(card) {
+    if (!certModal) { return; }
+    lastCertTrigger = card;
+    certModalImg.src = card.getAttribute('data-cert-src');
+    certModalImg.alt = card.getAttribute('data-cert-title') + ' certificate';
+    certModalTitle.textContent = card.getAttribute('data-cert-title');
+    certModalIssuer.textContent = card.getAttribute('data-cert-issuer');
+
+    certModal.hidden = false;
+    document.body.classList.add('is-locked');
+    requestAnimationFrame(function () { certModal.classList.add('is-open'); });
+  }
+
+  function closeCert() {
+    if (!certModal || certModal.hidden) { return; }
+    certModal.classList.remove('is-open');
+    document.body.classList.remove('is-locked');
+    var hide = function () {
+      certModal.hidden = true;
+      certModalImg.src = '';
+    };
+    if (reduceMotion) { hide(); } else { window.setTimeout(hide, 360); }
+    if (lastCertTrigger) { lastCertTrigger.focus(); }
+  }
+
+  Array.prototype.forEach.call(certCards, function (card) {
+    card.addEventListener('click', function () { openCert(card); });
+  });
+
+  if (certModal) {
+    Array.prototype.forEach.call(
+      certModal.querySelectorAll('[data-cert-close]'),
+      function (el) { el.addEventListener('click', closeCert); }
+    );
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !certModal.hidden) { closeCert(); }
+    });
   }
 
 })();
